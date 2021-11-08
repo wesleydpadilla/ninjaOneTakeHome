@@ -2,7 +2,7 @@
 
 ### Installing server and app
 
-Go to the devices-clientapp folder inside of the main devices-clientapp and install
+Go to the devices-clientapp folder inside of the main ninjaOneTakeHome folder and install
 
 ```bash
 $ npm install
@@ -25,7 +25,7 @@ Start the devicesTask_serverApp on port 3000 first
 $ npm start
 ```
 
-then run devices-clientapp inside of the devices-clientapp folder on any port that's not 3000
+open another terminal then run devices-clientapp inside of the ninjaOneTakeHome folder on any port that's not 3000
 
 ```bash
 $ npm start
