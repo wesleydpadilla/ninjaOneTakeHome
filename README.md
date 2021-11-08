@@ -8,7 +8,7 @@ Go to the devices-clientapp folder inside of the main ninjaOneTakeHome folder an
 $ npm install
 ```
 
-then go to the devicesTask_serverApp folder inside of the main devices-clientapp and install
+then go to the devicesTask_serverApp folder inside of the main ninjaOneTakeHome folder and install
 
 ```bash
 $ npm install
