@@ -44,15 +44,15 @@ export const devicesReducer = (state = initialState, action) => {
             : a[action.payload] - b[action.payload]
         })
       }
-    // case "RESET_BEFORE_FILTER":
-    //   return { ...state, data: action.payload }
-
     case "FILTER_DEVICES":
       return {
         ...state,
-        data: [...state.data].filter(device => {
-          return device.type === action.payload
-        })
+        data:
+          action.payload === "ALL"
+            ? [...state.data]
+            : [...state.data].filter(device => {
+                return device.type === action.payload
+              })
       }
 
     default:

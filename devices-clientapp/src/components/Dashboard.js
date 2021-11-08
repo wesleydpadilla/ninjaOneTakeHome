@@ -11,7 +11,6 @@ function Dashboard() {
   const { sortDevices } = useActions()
 
   const devices = useSelector(state => state.devices.data)
-  console.log(devices)
 
   useEffect(() => {
     fetchDevices().then(() => {
