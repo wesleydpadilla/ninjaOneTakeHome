@@ -1,9 +1,13 @@
 import React, { useState } from "react"
 import { useActions } from "../hooks/useActions"
+import { useSelector } from "react-redux"
 
 function DeviceTypeDropDown() {
   const { filterDevices } = useActions()
   const { fetchDevices } = useActions()
+
+  const sortValue = useSelector(state => state.sortAndFilter.sort)
+  const { sortDevices } = useActions()
 
   return (
     <div>
@@ -12,7 +16,9 @@ function DeviceTypeDropDown() {
         name="deviceType"
         id="deviceType"
         onChange={e => {
-          fetchDevices().then(() => filterDevices(e.target.value))
+          fetchDevices()
+            .then(() => filterDevices(e.target.value))
+            .then(() => sortDevices(sortValue))
         }}
       >
         <option label="All" value="ALL"></option>

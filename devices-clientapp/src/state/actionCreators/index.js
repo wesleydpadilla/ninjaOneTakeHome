@@ -88,7 +88,18 @@ export const sortDevices = sortBy => {
 
 export const filterDevices = filterBy => {
   return dispatch => {
-    //dispatch({ type: "RESET_BEFORE_FILTER", payload: prevData })
     dispatch({ type: "FILTER_DEVICES", payload: filterBy })
+  }
+}
+
+export const getSortValue = sortValue => {
+  return dispatch => {
+    dispatch({ type: "GET_SORT", payload: sortValue})
+  }
+}
+
+export const getFilterValue = filterValue => {
+  return dispatch => {
+    dispatch({ type: "GET_FILTER", payload: filterValue})
   }
 }

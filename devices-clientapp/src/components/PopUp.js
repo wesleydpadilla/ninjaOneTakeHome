@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import "../styles/popUpStyle.scss"
 import { v4 as uuid } from "uuid"
 import { useActions } from "../hooks/useActions"
+import { useSelector } from "react-redux"
 
 function PopUp({ setVisibility, visible }) {
   const [systemName, setSystemName] = useState("")
@@ -16,6 +17,8 @@ function PopUp({ setVisibility, visible }) {
   })
 
   const { addDevices } = useActions()
+  const sortValue = useSelector(state => state.sortAndFilter.sort)
+  const { sortDevices } = useActions()
 
   visible
     ? (document.body.style.overflow = "hidden")
@@ -38,7 +41,9 @@ function PopUp({ setVisibility, visible }) {
           <form
             onSubmit={e => {
               e.preventDefault()
-              addDevices(newDevice)
+              addDevices(newDevice).then(() => {
+                sortDevices(sortValue)
+              })
               setVisibility(!visible)
             }}
           >

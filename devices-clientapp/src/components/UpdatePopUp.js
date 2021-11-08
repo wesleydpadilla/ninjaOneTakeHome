@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import ReactDOM from "react-dom"
 import "../styles/updatePopUpStyle.scss"
 import { useActions } from "../hooks/useActions"
+import { useSelector } from "react-redux"
 
 function UpdatePopUp({ updateVisible, setUpdateVisibility, device }) {
   const [systemName, setSystemName] = useState(device.system_name)
@@ -14,6 +15,8 @@ function UpdatePopUp({ updateVisible, setUpdateVisibility, device }) {
     hdd_capacity: hddCapacity
   })
   const { updateDevices } = useActions()
+  const sortValue = useSelector(state => state.sortAndFilter.sort)
+  const { sortDevices } = useActions()
   updateVisible
     ? (document.body.style.overflow = "hidden")
     : (document.body.style.overflow = "scroll")
@@ -40,7 +43,9 @@ function UpdatePopUp({ updateVisible, setUpdateVisibility, device }) {
         <div>
           <form
             onSubmit={() => {
-              updateDevices(device, updatedDevice)
+              updateDevices(device, updatedDevice).then(() => {
+                sortDevices(sortValue)
+              })
               setUpdateVisibility(false)
             }}
           >
