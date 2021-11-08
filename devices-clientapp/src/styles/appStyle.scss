@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+
+  &__modifiers {
+    padding: 15px;
+  }
+  &__newDeviceBtn {
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 5px;
+    border: none;
+    color: white;
+    font: 15px Arial;
+    font-weight: bolder;
+    background-color: #3ba1c4;
+  }
+}

@@ -1,0 +1,15 @@
+.dashboard {
+  overflow-y: scroll;
+  height: 100vh;
+
+  &::-webkit-scrollbar {
+    background: #f1f1f1;
+    &-thumb {
+      background: #2b4259;
+      border-radius: 5px;
+      &:hover {
+        background: #203244;
+      }
+    }
+  }
+}

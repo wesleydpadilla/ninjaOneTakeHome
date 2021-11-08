@@ -1,0 +1,35 @@
+.device {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #c0cace;
+  justify-content: space-between;
+  padding: 10px 15px;
+  color: #2b4259;
+
+  &:nth-child(2n) {
+    background-color: #f0f7fa;
+  }
+
+  &__button {
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 5px;
+    border: none;
+    color: white;
+    font: 15px Arial;
+    font-weight: bolder;
+
+    &--update {
+      background-color: #3ba1c4;
+      margin-left: 30px;
+    }
+    &--delete {
+      background-color: #ce2043;
+    }
+  }
+}
+
+h2,
+p {
+  margin: 0;
+}
