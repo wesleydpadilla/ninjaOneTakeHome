@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { useActions } from "../hooks/useActions"
 import { useSelector } from "react-redux"
 
@@ -6,12 +6,19 @@ function SortByDropDown() {
   const sortValue = useSelector(state => state.sortAndFilter.sort)
   const { sortDevices } = useActions()
   const { getSortValue } = useActions()
-  console.log(sortValue)
+  const selectRef = useRef()
+  const state = useSelector(state => state)
+  console.log(state)
+
+  useEffect(() => {
+    getSortValue(selectRef.current.value)
+  }, [])
 
   return (
     <div>
       <label htmlFor="sortBy">Sort by:</label>
       <select
+        ref={selectRef}
         defaultValue
         name="sortBy"
         onChange={e => {
@@ -19,18 +26,8 @@ function SortByDropDown() {
           sortDevices(sortValue)
         }}
       >
-        <option
-          label={sortValue === "hdd_capacity" ? "System Name" : "HDD Capacity"}
-          hidden
-        ></option>
-        <option
-          label={sortValue === "System Name" ? "HDD Capacity" : "System Name"}
-          value={"hdd_capacity"}
-        ></option>
-        <option
-          label="HDD Capacity"
-          value={sortValue === "hdd_capacity" ? "system_name" : "hdd_capacity"}
-        ></option>
+        <option label="System Name" value="hdd_capacity"></option>
+        <option label="HDD Capacity" value="system_name"></option>
       </select>
     </div>
   )

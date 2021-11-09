@@ -44,7 +44,9 @@ function UpdatePopUp({ updateVisible, setUpdateVisibility, device }) {
           <form
             onSubmit={() => {
               updateDevices(device, updatedDevice).then(() => {
-                sortDevices(sortValue)
+                sortDevices(
+                  sortValue === "system_name" ? "hdd_capacity" : "system_name"
+                )
               })
               setUpdateVisibility(false)
             }}

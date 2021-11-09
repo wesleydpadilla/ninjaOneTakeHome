@@ -1,6 +1,6 @@
 const initialState = {
   filter: "ALL",
-  sort: "hdd_capacity"
+  sort: ""
 }
 
 export const sortAndFilterReducer = (state = initialState, action) => {

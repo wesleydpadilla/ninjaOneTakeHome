@@ -16,8 +16,8 @@ function PopUp({ setVisibility, visible }) {
     hdd_capacity: hddCapacity
   })
 
-  const { addDevices } = useActions()
   const sortValue = useSelector(state => state.sortAndFilter.sort)
+  const { addDevices } = useActions()
   const { sortDevices } = useActions()
 
   visible
@@ -42,7 +42,9 @@ function PopUp({ setVisibility, visible }) {
             onSubmit={e => {
               e.preventDefault()
               addDevices(newDevice).then(() => {
-                sortDevices(sortValue)
+                sortDevices(
+                  sortValue === "system_name" ? "hdd_capacity" : "system_name"
+                )
               })
               setVisibility(!visible)
             }}
