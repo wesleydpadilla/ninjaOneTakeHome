@@ -9,7 +9,7 @@ export const sortAndFilterReducer = (state = initialState, action) => {
       return { ...state, sort: action.payload }
 
     case "GET_FILTER":
-      return { ...state, ...state.filter[action.payload] }
+      return { ...state, filter: action.payload }
 
     default:
       return state

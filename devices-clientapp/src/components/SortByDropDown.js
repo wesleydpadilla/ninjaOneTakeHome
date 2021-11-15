@@ -4,11 +4,8 @@ import { useSelector } from "react-redux"
 
 function SortByDropDown() {
   const sortValue = useSelector(state => state.sortAndFilter.sort)
-  const { sortDevices } = useActions()
-  const { getSortValue } = useActions()
+  const { sortDevices, getSortValue } = useActions()
   const selectRef = useRef()
-  const state = useSelector(state => state)
-  console.log(state)
 
   useEffect(() => {
     getSortValue(selectRef.current.value)

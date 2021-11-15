@@ -1,10 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 import { useActions } from "../hooks/useActions"
 import { useSelector } from "react-redux"
 
 function DeviceTypeDropDown() {
-  const { filterDevices } = useActions()
-  const { fetchDevices } = useActions()
+  const { filterDevices, getFilterValue, fetchDevices } = useActions()
 
   const sortValue = useSelector(state => state.sortAndFilter.sort)
   const { sortDevices } = useActions()
@@ -18,11 +17,14 @@ function DeviceTypeDropDown() {
         onChange={e => {
           fetchDevices()
             .then(() => filterDevices(e.target.value))
-            .then(() =>
-              sortDevices(
-                sortValue === "system_name" ? "hdd_capacity" : "system_name"
+            .then(() => {
+              return (
+                sortDevices(
+                  sortValue === "system_name" ? "hdd_capacity" : "system_name"
+                ),
+                getFilterValue(e.target.value)
               )
-            )
+            })
         }}
       >
         <option label="All" value="ALL"></option>

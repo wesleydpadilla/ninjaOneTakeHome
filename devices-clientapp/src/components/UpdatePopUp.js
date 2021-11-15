@@ -14,12 +14,8 @@ function UpdatePopUp({ updateVisible, setUpdateVisibility, device }) {
     type,
     hdd_capacity: hddCapacity
   })
-  const { updateDevices } = useActions()
+  const { updateDevices, sortDevices } = useActions()
   const sortValue = useSelector(state => state.sortAndFilter.sort)
-  const { sortDevices } = useActions()
-  updateVisible
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "scroll")
 
   const normailizeText = () => {
     return device.type

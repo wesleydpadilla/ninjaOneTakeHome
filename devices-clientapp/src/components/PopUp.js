@@ -17,12 +17,8 @@ function PopUp({ setVisibility, visible }) {
   })
 
   const sortValue = useSelector(state => state.sortAndFilter.sort)
-  const { addDevices } = useActions()
-  const { sortDevices } = useActions()
-
-  visible
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "scroll")
+  const filterValue = useSelector(state => state.sortAndFilter.filter)
+  const { addDevices, sortDevices, filterDevices } = useActions()
 
   const submitMe = () => {
     setNewDevice({
@@ -41,11 +37,15 @@ function PopUp({ setVisibility, visible }) {
           <form
             onSubmit={e => {
               e.preventDefault()
-              addDevices(newDevice).then(() => {
-                sortDevices(
-                  sortValue === "system_name" ? "hdd_capacity" : "system_name"
-                )
-              })
+              addDevices(newDevice)
+                .then(() => {
+                  sortDevices(
+                    sortValue === "system_name" ? "hdd_capacity" : "system_name"
+                  )
+                })
+                .then(() => {
+                  filterDevices(filterValue)
+                })
               setVisibility(!visible)
             }}
           >
